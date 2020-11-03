@@ -27,8 +27,16 @@ function draw() {
   text(foodS, 250, 30);
   text("Use Up Arrow key to feed Drago", 250, 100);
 
-  if (keyDown(UP_ARROW)) {
-    writeStock(foodS);
+  if (foodS === 0){
+    if (mousePressedOver(dog)) {
+      foodS = foodS + 20;
+    }
+}
+
+  if (keyWentDown(UP_ARROW)) {
+    if (foodS > 0) {
+      foodS = foodS - 1
+    }
     dog.changeAnimation("dog1", happyDog1);
     }
 }
@@ -36,14 +44,4 @@ function draw() {
 function readStock(data) {
   foodS = data.val();
   console.log(foodS);
-}
-function writeStock(x) {
-  if(x <= 0){
-    x = 0;
-  }else{
-    x = x - 1;
-  }
-  database.ref('/').update({
-      food: x,
-  });
 }
