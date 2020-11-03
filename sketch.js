@@ -39,7 +39,11 @@ function draw() {
     }
     dog.changeAnimation("dog1", happyDog1);
     }
-}
+
+    if (foodS === 0) {
+      dog.changeAnimation("dog", happyDog);
+    }
+} 
 
 function readStock(data) {
   foodS = data.val();
